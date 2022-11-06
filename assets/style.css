@@ -1,0 +1,35 @@
+body {
+    position: relative;
+    
+}
+
+#q1 {
+    color: black;
+}
+
+/*.card-text {
+    text-align: right;
+    font: bold;
+}
+
+.card-body {
+    justify-content: center;
+    
+    
+}
+
+#number h4{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}*/
+
+.header-box {
+    padding: 90px;
+    background-color: black; 
+    height: 80%;
+    color:rgb(100, 171, 233);
+    
+} 
+
+
