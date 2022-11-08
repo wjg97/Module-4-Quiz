@@ -1,29 +1,55 @@
-const previousBtn = document.getElementById('previous');
-const nextBtn = document.getElementById('next');
-const option1 = document.getElementById('option1');
-const option2 = document.getElementById('option2');
-const option3 = document.getElementById('option3');
-const option4 = document.getElementById('option4');
-const number = document.getElementById('number');
-const questionText = document.getElementById('question-text');
-const timer = document.getElementById('timer');
+let previousBtn = document.getElementById('previous');
+let nextBtn = document.getElementById('next');
+let option1 = document.getElementById('answer1');
+let option2 = document.getElementById('answer2');
+let option3 = document.getElementById('answer3');
+let option4 = document.getElementById('answer4');
+let number = document.getElementById('number');
+let submitBtn = document.getElementById('submit');
+let startBtn = document.getElementById('start-button');
+let questionText = document.getElementById('question-text');
+let timer = document.getElementById('timer');
 
-var currentQuestion=0;
-var count=0;
 
+let currentQuestion=0;
+var score = 0;
+var highscore = localStorage.getItem("highscore");
+
+if(highscore !== null){
+    if (score > highscore) {
+        localStorage.setItem("highscore", score);      
+    }
+}
+else{
+    localStorage.setItem("highscore", score);
+}
+console.log(highscore);
+
+let startButton = document.getElementById('start-button');
+
+/*startBtn.addEventListener("click",startBtn);
+
+function startGame () {
+    console.log('started')
+    startButton.classList.add('hide')
+    questionText.classList.remove('hide')
+}
+*/
 let questions = [
-{
-    question1: "What one is NOT a Javascript Type?",
+   
+ {
+    question: "What one is NOT a Javascript Type?",
     answers: [
         {option1:"Number",answer:false},
         {option2:"String",answer:false},
         {option3:"Element",answer:true},
         {option4:"Boolean",answer:false}
     ]
+
 },
 
 {
-    question2: "What Company invented JavaScript?",
+    question: "What Company invented JavaScript?",
     answers: [
         {option1:"Twitter",answer:false},
         {option2:"Meta",answer:false},
@@ -33,7 +59,7 @@ let questions = [
 },
 
 {
-    question3: "What does this operator mean? ==",
+    question: "What does this operator mean == ?",
     answers: [
         {option1:"Equals",answer:true},
         {option2:"Logical and",answer:false},
@@ -43,17 +69,17 @@ let questions = [
 },
 
 {
-    question4: "What option is not a Pop up box available in JavaScript?",
+    question: "What option is not a Pop up box available in JavaScript?",
     answers: [
-        {option1:"alert",answer:false},
-        {option2:"confirm and",answer:false},
-        {option3:"prompt",answer:false},
-        {option4:"window",answer:true},
+        {option1:"Alert",answer:false},
+        {option2:"Confirm and",answer:false},
+        {option3:"Prompt",answer:false},
+        {option4:"Window",answer:true},
     ]
 },
 
 {
-    question5: "Which option is not a boolean operator in JavaScript?",
+    question: "Which option is not a boolean operator in JavaScript?",
     answers: [
         {option1:"||",answer:false},
         {option2:"#",answer:true},
@@ -63,17 +89,14 @@ let questions = [
 }    
 ]
 
-previousBtn.addEventListener('click',previousBtn);
+previousBtn.addEventListener('click',previous);
 nextBtn.addEventListener('click',next);
-option1.addEventListener('click',option1);
-option2.addEventListener('click',option2);
-option3.addEventListener('click',option3);
-option4.addEventListener('click',option4);
+submitBtn.addEventListener('click',submit);
 
 function beginQuiz () {
     currentQuestion = 0;
     questionText.innerHTML = questions[currentQuestion].question;
-    option1.innerHTML = questions[currentQuestion].answers[0].option;
+    option1.innerHTML = questions[currentQuestion].answers[0].option1;
     option1.onclick = () => {
         let ano = 0
         if(questions[currentQuestion].answers[ano].answer){
@@ -81,71 +104,194 @@ function beginQuiz () {
                 score++;
             }
         } 
-        userScore.innerHTML = score;
+        number.innerHTML = score;
         if (currentQuestion<5) {
             next();
         }
     }
-    currentQuestion = 0;
+    currentQuestion = 1;
     questionText.innerHTML = questions[currentQuestion].question;
-    option1.innerHTML = questions[currentQuestion].answers[1].option;
-    option1.onclick = () => {
+    option2.innerHTML = questions[currentQuestion].answers[1].option2;
+    option2.onclick = () => {
         let ano = 0
         if(questions[currentQuestion].answers[ano].answer){
             if(score<5) {
                 score++;
             }
         } 
-        userScore.innerHTML = score;
+        number.innerHTML = score;
         if (currentQuestion<5) {
             next();
         }
     }
-    currentQuestion = 0;
+    currentQuestion = 2;
     questionText.innerHTML = questions[currentQuestion].question;
-    option1.innerHTML = questions[currentQuestion].answers[2].option;
-    option1.onclick = () => {
+    option3.innerHTML = questions[currentQuestion].answers[2].option3;
+    option3.onclick = () => {
         let ano = 0
         if(questions[currentQuestion].answers[ano].answer){
             if(score<5) {
                 score++;
             }
         } 
-        userScore.innerHTML = score;
+        number.innerHTML = score;
         if (currentQuestion<5) {
             next();
         }
     }
-    currentQuestion = 0;
+    currentQuestion = 3;
     questionText.innerHTML = questions[currentQuestion].question;
-    option1.innerHTML = questions[currentQuestion].answers[3].option;
-    option1.onclick = () => {
+    option4.innerHTML = questions[currentQuestion].answers[3].option4;
+    option4.onclick = () => {
         let ano = 0
         if(questions[currentQuestion].answers[ano].answer){
             if(score<5) {
                 score++;
             }
         } 
-        userScore.innerHTML = score;
+        number.innerHTML = score;
         if (currentQuestion<5) {
             next();
         }
     }
-    currentQuestion = 0;
+}
+
+console.log(questionText);
+
+function next (){
+    currentQuestion++;
+    if(currentQuestion>=5){
+        nextBtn.classList.add('hide');
+        previousBtn.classList.remove('hide');
+    }
     questionText.innerHTML = questions[currentQuestion].question;
-    option1.innerHTML = questions[currentQuestion].answers[4].option;
+    option1.innerHTML = questions[currentQuestion].answers[0].option1;
     option1.onclick = () => {
-        let ano = 0
+        let ano = 0;
         if(questions[currentQuestion].answers[ano].answer){
-            if(score<5) {
+            if (score<5){
                 score++;
             }
-        } 
-        userScore.innerHTML = score;
-        if (currentQuestion<5) {
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
             next();
         }
     }
+    option2.innerHTML = questions[currentQuestion].answers[1].option2;
+    option2.onclick = () => {
+        let ano = 1;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    option3.innerHTML = questions[currentQuestion].answers[2].option3;
+    option3.onclick = () => {
+        let ano = 2;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    option4.innerHTML = questions[currentQuestion].answers[3].option4;
+    option4.onclick = () => {
+        let ano = 3;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    previousBtn.classList.remove('hide');
+}    
+
+function previous (){
+    currentQuestion--;
+    if(currentQuestion<=0){
+        previousBtn.classList.add('hide');
+        nextBtn.classList.remove('hide');
+    }
+    questionText.innerHTML = questions[currentQuestion].question;
+    option1.innerHTML = questions[currentQuestion].answers[0].option1;
+    option1.onclick = () => {
+        let ano = 0;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    option2.innerHTML = questions[currentQuestion].answers[1].option2;
+    option2.onclick = () => {
+        let ano = 1;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    option3.innerHTML = questions[currentQuestion].answers[2].option3;
+    option3.onclick = () => {
+        let ano = 2;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+    option4.innerHTML = questions[currentQuestion].answers[3].option4;
+    option4.onclick = () => {
+        let ano = 3;
+        if(questions[currentQuestion].answers[ano].answer){
+            if (score<5){
+                score++;
+            }
+        }
+        number.innerHTML = score;
+        if(currentQuestion<5){
+            next();
+        }
+    }
+}    
+
+function submit (){
+    previousBtn.classList.add('d-none');
+    nextBtn.classList.add('d-none');
+    submitBtn.classList.add('d-none');
+    option1.classList.add('d-none');
+    option2.classList.add('d-none');
+    option3.classList.add('d-none');
+    option4.classList.add('d-none');
+    questionText.classList.add('d-none');
+    startBtn.classList.add('d-none');
 
 }
-console.log(questionText);
+
+
