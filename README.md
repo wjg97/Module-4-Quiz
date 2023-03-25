@@ -1,7 +1,7 @@
 # Module-4-Quiz
 Javascript Quiz #
 ## Description
-This applicaton is designed to help you with some basics of JavaScript. I had to redo this assignment to meet grading standars. Going back doing the Module 4 homework at the end of the bootcamp made me relize how far I have come. I decided to redo the entire app with loops and that made the code so much cleaner and easier to read. 
+This applicaton is designed to help you with some basics of JavaScript. I had to redo this assignment to meet grading standards. Going back doing the Module 4 homework at the end of the bootcamp made me relize how far I have come. I decided to redo the entire app with loops, and that made the code so much cleaner and easier to read. 
 ## Installation
 N/A
 
