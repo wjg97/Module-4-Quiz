@@ -1,11 +1,141 @@
 body {
+    background-color: rgb(63, 27, 193);
+}
+
+#hs-label {
+    display: none;
+    text-align: center;
+}
+
+.answer-btn {
+    color: rgb(105, 194, 121);
+    background-color: rgb(1, 0, 0);
+    display: block;
+    font-size: 32px;
+    margin-bottom: 2%;
+}
+
+.highscore-pg {
+    color: white;
+    display: none;
+} 
+
+.container {
+    display: block;
+}
+
+.card {
+    background-color: rgb(63, 27, 193);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hs-timer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1%;
+}
+
+#start-button {
+    font-size: larger;
+    color: rgb(105, 194, 121);
+    background-color: black;
+}
+
+button {
+    border-style: solid;
+    border-radius: 20px;
+    
+}
+
+button:hover {
+   opacity: 0.75;
+}
+
+.questions {
+    display: flex;
+    justify-content: center;
+}
+
+#view-hs {
+    font-size: x-large;
+    margin-top: 1em;
+    color: rgb(105, 194, 121);
+    background-color: black;
+}
+
+#hs-div {
+    display: block;
+    justify-content: space-evenly;
+    margin:0;
+    width: 100%;
+}
+
+.back-btn {
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    margin-top: 2%;
+    background-color: rgb(105, 194, 121);
+    color: white;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+}
+
+.start-pg {
+    color: white;
+    display: block;
+    font-size: larger;
+    width: 50%;
+}
+
+#hs-list {
+    width: 100%;
+    text-align: center;
+}
+
+.questions {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding:5%;
+    font-size: xx-large;
+}
+
+#current-score {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+#results {
+    border-top-style: solid;
+    padding-top: 2%;
+}
+
+.time {
+    color: white;
+}
+
+.result {
+    background-color: rgb(6, 94, 171);
+}
+
+
+/* Old Code  */
+
+/* body {
     position: relative;
     margin: 0%;
     padding: 0%;
 }
 
 #q1 {
-    color: black;
+    color: rgb(248, 240, 240);
 }
 
 /*.card-text {
@@ -25,12 +155,10 @@ body {
     justify-content: center;
 }*/
 
-.header-box {
+/* .header-box {
     padding: 90px;
     background-color: black; 
     height: 80%;
     color:rgb(100, 171, 233);
     
-} 
-
-
+}  */ 
